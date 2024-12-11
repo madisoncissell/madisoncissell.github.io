@@ -1,5 +1,5 @@
-name = "Gesta"
-description = "Episcopal Gesta"
+name = "MC Paw Paw network"
+description = "A network of Paw Paw farmers and institutions"
 requireLogin = false
 hideDeleteNodeButton = false
 allowLoggedInUserToImport = false
@@ -13,7 +13,7 @@ filterReduce = "Reduce"
 filterReduceHelp = "Show matches, Reduce (remove) others & recalculate sizes"
 filterFocus = "Focus"
 filterFocusHelp = "Show only nodes connected to the selected node within range"
-duplicateWarning = "You’re entering a duplicate node.  Do you want to View the Existing node, or Continue creating?"
+duplicateWarning = "NOTE: At least one other node has the same name. Use search or the node table to check the others."
 nodeIsLockedMessage = "This node is currently being edited by someone else, please try again later."
 edgeIsLockedMessage = "This edge is currently being edited by someone else, please try again later."
 templateIsLockedMessage = "The template is currently being edited, please try again later."
@@ -24,155 +24,289 @@ searchColor = "#008800"
 sourceColor = "#ffa500"
 
 [citation]
-text = "Gesta"
+text = "No citation set"
 hidden = false
 
 [nodeDefs.id]
 type = "number"
-displayLabel = "id"
+displayLabel = "Id"
 exportLabel = "ID"
 help = "System-generated unique id number"
+includeInGraphTooltip = true
+isProvenance = false
+hidden = false
 
 [nodeDefs.label]
 type = "string"
-displayLabel = "Label"
+displayLabel = "label"
 exportLabel = "Label"
-help = "A short title for the node"
+help = "Display name of the node"
 includeInGraphTooltip = true
+isProvenance = false
 hidden = false
 
 [nodeDefs.type]
 type = "select"
 displayLabel = "Type"
-exportLabel = "Type"
-help = "Multiple people are a 'Group'"
+exportLabel = "NodeType"
+help = "Select a category"
 includeInGraphTooltip = true
+isProvenance = false
 hidden = false
 
   [[nodeDefs.type.options]]
   color = "#eeeeee"
   label = ""
+  replacement = ""
+  delete = false
 
   [[nodeDefs.type.options]]
-  color = "#aabaf2"
-  label = "Person"
+  color = "#42b99c"
+  label = "Interviewee"
+  replacement = ""
+  delete = false
 
   [[nodeDefs.type.options]]
-  color = "#f2baaa"
-  label = "Bishop"
+  color = "#a96800"
+  label = "Persimmon Farm or Farmer"
+  replacement = ""
+  delete = false
 
   [[nodeDefs.type.options]]
-  color = "#3399ff"
-  label = "Group"
+  color = "#ff4013"
+  label = "Collective or Group"
+  replacement = ""
+  delete = false
 
   [[nodeDefs.type.options]]
-  color = "#00ff00"
-  label = "Place"
+  color = "#3dd729"
+  label = "Pawpaw Farm or Farmer"
+  replacement = ""
+  delete = false
 
   [[nodeDefs.type.options]]
-  color = "#ff0000"
-  label = "Thing"
-
-  [[nodeDefs.type.options]]
-  color = "#009999"
-  label = "Event"
+  color = "#feea00"
+  label = "Both Farm or Farmer"
+  replacement = ""
+  delete = false
 
 [nodeDefs.notes]
 type = "string"
-displayLabel = "Significance"
-exportLabel = "Significance"
-help = "Add some details."
+displayLabel = "Notes"
+exportLabel = "Notes"
+help = "General purpose notes text field"
 includeInGraphTooltip = true
+isProvenance = false
 hidden = false
 
 [nodeDefs.info]
 type = "string"
-displayLabel = "Geocode or Date"
-exportLabel = "Geocode or Date"
-help = "Use latitude/longitude or a date mm/dd/yyy"
+displayLabel = "Tag"
+exportLabel = "tag"
+help = "Institution? FB group? Other type of tag? Semi-colon delimited"
 includeInGraphTooltip = true
-hidden = true
+isProvenance = false
+hidden = false
+
+[nodeDefs.infoSource]
+type = "string"
+displayLabel = "Info Source"
+exportLabel = "InfoSource"
+help = "Who created this?  (aka Source)"
+includeInGraphTooltip = true
+isProvenance = true
+hidden = false
 
 [nodeDefs.degrees]
 type = "number"
 displayLabel = "Degrees"
 exportLabel = "Degrees"
-help = "Number of edges."
+help = "Number of edges connected to this node"
 includeInGraphTooltip = true
+isProvenance = false
 hidden = false
 
 [nodeDefs.created]
 displayLabel = "Created"
 exportLabel = "Created"
-includeInGraphTooltip = true
 help = "Date and time node was created"
+includeInGraphTooltip = true
+isProvenance = false
+hidden = false
+
+[nodeDefs.createdBy]
+displayLabel = "Created By"
+help = "Author who created the node"
+exportLabel = "Created By"
+includeInGraphTooltip = true
+isProvenance = false
+hidden = false
 
 [nodeDefs.updated]
-displayLabel = "Last Updated"
-exportLabel = "Last Updated"
+displayLabel = "Updated"
+exportLabel = "Updated"
+help = "Date and time node was last modified"
 includeInGraphTooltip = true
-help = "Date and time of last update"
+isProvenance = false
+hidden = false
+
+[nodeDefs.updatedBy]
+displayLabel = "Updated By"
+exportLabel = "Updated By"
+help = "Author who updated the node"
+includeInGraphTooltip = true
+isProvenance = false
+hidden = false
+
+[nodeDefs.revision]
+displayLabel = "Revision"
+exportLabel = "Revision"
+help = "Number of times this node has been revised"
+includeInGraphTooltip = true
+isProvenance = false
+hidden = true
 
 [edgeDefs.id]
 type = "number"
-displayLabel = "id"
+displayLabel = "Id"
 exportLabel = "ID"
 help = "System-generated unique id number"
+isProvenance = false
+hidden = false
 
 [edgeDefs.source]
-type = "string"
+type = "number"
 displayLabel = "Source"
 exportLabel = "Source"
-help = ""
+help = "Edge source node"
+isProvenance = false
 hidden = false
 
 [edgeDefs.target]
-type = "string"
+type = "number"
 displayLabel = "Target"
 exportLabel = "Target"
-help = ""
+help = "Edge target node"
 hidden = false
 
 [edgeDefs.type]
 type = "select"
 displayLabel = "Type"
-exportLabel = "Type"
-help = ""
+exportLabel = "EdgeType"
+help = "Type of edge connection"
+isProvenance = false
 hidden = false
 
   [[edgeDefs.type.options]]
-  color = "#7a7a7a"
+  color = "#eeeeee"
   label = ""
 
   [[edgeDefs.type.options]]
-  color = "#7a4a00"
+  color = "#444444"
   label = "interacts with"
-
-  [[edgeDefs.type.options]]
-  color = "#002e7a"
-  label = "mentions"
-
-  [[edgeDefs.type.options]]
-  color = "#38571a"
-  label = "visits"
 
 [edgeDefs.notes]
 type = "string"
-displayLabel = "Signficance"
-exportLabel = "Signficance"
-help = ""
+displayLabel = "Variety"
+exportLabel = "Variety"
+help = "Paw Paw Variety"
+isProvenance = false
 hidden = false
 
 [edgeDefs.info]
 type = "string"
-displayLabel = "Approximate Date of Interaction"
-exportLabel = "Approximate Date of Interaction"
-help = ""
-hidden = true
+displayLabel = "Notes"
+exportLabel = "Notes"
+help = "Other notes about this connection"
+isProvenance = false
+hidden = false
+
+[edgeDefs.weight]
+type = "number"
+defaultValue = 1
+displayLabel = "Weight"
+exportLabel = "Weight"
+help = "Weight of edge"
+includeInGraphTooltip = true
+isRequired = true
+isProvenance = false
+hidden = false
+
+[edgeDefs.infoSource]
+type = "string"
+displayLabel = "Info Source"
+exportLabel = "InfoSource"
+help = "Who created this?  (aka Source)"
+includeInGraphTooltip = true
+isProvenance = true
+hidden = false
 
 [edgeDefs.citation]
 type = "string"
 displayLabel = "Citation"
 exportLabel = "Citation"
-help = "Enter Chapter number."
+help = 'Source Book.Chapter (e.g. "Part 2 06.03")'
+isProvenance = false
 hidden = false
+
+[edgeDefs.category]
+type = "string"
+displayLabel = "Category"
+exportLabel = "Category"
+help = "Category (deprecated)"
+isProvenance = false
+hidden = true
+
+[edgeDefs.created]
+displayLabel = "Created"
+exportLabel = "Created"
+includeInGraphTooltip = true
+help = "Date and time edge was created"
+isProvenance = false
+hidden = false
+
+[edgeDefs.createdBy]
+displayLabel = "Created By"
+exportLabel = "Created By"
+includeInGraphTooltip = true
+help = "Author who created the edge"
+isProvenance = true
+hidden = false
+
+[edgeDefs.updated]
+displayLabel = "Updated"
+exportLabel = "Updated"
+includeInGraphTooltip = true
+help = "Date and time edge was last modified"
+isProvenance = false
+hidden = false
+
+[edgeDefs.updatedBy]
+displayLabel = "Updated By"
+exportLabel = "Updated By"
+includeInGraphTooltip = true
+help = "Author who updated the nodedgee"
+isProvenance = true
+hidden = false
+
+[edgeDefs.revision]
+displayLabel = "Revision"
+exportLabel = "Revision"
+includeInGraphTooltip = true
+help = "Number of times this edge has been revised"
+isProvenance = false
+hidden = true
+
+[edgeDefs.sourceLabel]
+displayLabel = "Source"
+exportLabel = "Source Label"
+help = "Source label"
+hidden = false
+type = "string"
+
+[edgeDefs.targetLabel]
+displayLabel = "Target"
+exportLabel = "Target Label"
+help = "Target label"
+hidden = false
+type = "string"
